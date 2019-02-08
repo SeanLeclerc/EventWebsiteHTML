@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+<style>
+	/* Full-width input fields */
+	input[type=text], input[type=password] {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		box-sizing: border-box;
+	}
+
+	/* Set a style pour les buttons */
+	button {
+		background: linear-gradient(#4566b0, #0084ff);
+		color: white;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+	}
+
+		button:hover {
+			opacity: 0.8;
+		}
+
+	/* Extra styles pour le cancel button */
+	.cancelbtn {
+		width: auto;
+		padding: 10px 18px;
+		background-color: #f44336;
+	}
+
+	/* Centre l'image et la position close button */
+	.imgcontainer {
+		text-align: center;
+		margin: 24px 0 12px 0;
+		position: relative;
+	}
+
+	img.avatar {
+		width: 40%;
+		border-radius: 50%;
+	}
+
+	.container {
+		padding: 16px;
+	}
+
+	span.psw {
+		float: right;
+		padding-top: 16px;
+	}
+
+	/* (background) */
+	.modal {
+		display: none; /* Hidden par default */
+		position: fixed; /* reste en place */
+		z-index: 1; /* Sit on top */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: auto; 
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+		padding-top: 60px;
+	}
+
+	/* Content/Box */
+	.modal-content {
+		background-color: #fefefe;
+		margin: 5% auto 15% auto; 
+		border: 1px solid #888;
+		width: 80%; 
+	}
+
+	/* Close Button (x) */
+	.close {
+		position: absolute;
+		right: 25px;
+		top: 0;
+		color: #000;
+		font-size: 35px;
+		font-weight: bold;
+	}
+
+		.close:hover,
+		.close:focus {
+			color: red;
+			cursor: pointer;
+		}
+
+	/* Zoom Animation */
+	.animate {
+		-webkit-animation: animatezoom 0.6s;
+		animation: animatezoom 0.6s
+	}
+
+	@-webkit-keyframes animatezoom {
+		from {
+			-webkit-transform: scale(0)
+		}
+
+		to {
+			-webkit-transform: scale(1)
+		}
+	}
+
+	@keyframes animatezoom {
+		from {
+			transform: scale(0)
+		}
+
+		to {
+			transform: scale(1)
+		}
+	}
+
+	/* styles pour span et cancel button sur de écrans super petit */
+	@media screen and (max-width: 300px) {
+		span.psw {
+			display: block;
+			float: none;
+		}
+
+		.cancelbtn {
+			width: 100%;
+		}
+	}
+</style>
+<head>
+        <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="wrapper">
+            <img src="./img/guardianlogo.png" id="logo" alt="Logo" />
+            <nav>
+                <ul>
+                    <li><a href="index.html">Acceuil</a></li>
+                    <li><a href="events.php">Evenement</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="apropos.html">A propos</a></li>
+                    <li><a href="loginPage.html">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+	<h2 align="center">Login Administrateur :</h2>
+	<div align="center">
+		<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+	</div>
+	<div id="id01" class="modal">
+
+		<form name="myform" class="modal-content animate">
+			<div class="imgcontainer">
+				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<img src="./images/img_avatar2.png" alt="Avatar" class="avatar">
+			</div>
+
+			<div class="container">
+				<label><b>Username</b></label>
+				<input id="user" type="text" placeholder="Entrer Username" name="uname" required>
+
+				<label><b>Password</b></label>
+				<input id="pass" type="password" placeholder="Entrer Password" name="psw" required>
+
+				<button type="button" value="Login" onclick="javascript:validate()">Login</button>
+				<label>
+					<input type="checkbox" checked="checked"> Remember me
+				</label>
+			</div>
+			<div class="container" style="background-color:#f1f1f1">
+				<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		// Get modal
+		var modal = document.getElementById('id01');
+
+		// Ferme lorsuqe l'utilisateur click en dehors'
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		function validate() {
+			if (document.getElementById("user").value == "root"
+				&& document.getElementById("pass").value == "gg") {
+				location.href = "admin.php";
+			}
+			else {
+				alert("validation failed");
+				location.href = "loginPage.html";
+			}
+		}
+	</script>
+</body>
+</html>
